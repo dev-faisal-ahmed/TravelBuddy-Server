@@ -10,3 +10,9 @@ authRouter.post(
   validationHandler(authValidation.register),
   authController.register
 );
+
+authRouter.post(
+  '/login',
+  validationHandler(authValidation.login),
+  authController.login
+);

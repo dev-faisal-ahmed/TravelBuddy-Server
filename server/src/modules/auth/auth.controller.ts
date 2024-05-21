@@ -12,4 +12,14 @@ const register = tryCatch(async (req, res) => {
   });
 });
 
-export const authController = { register };
+const login = tryCatch(async (req, res) => {
+  const token = await authServices.login(req.body);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Login was successful',
+    data: { token },
+  });
+});
+
+export const authController = { register, login };

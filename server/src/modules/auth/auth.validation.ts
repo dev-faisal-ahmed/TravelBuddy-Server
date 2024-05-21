@@ -8,6 +8,7 @@ const register = z.object({
 
   password: z.string({ required_error: 'Password is required' }),
 });
+
 export const authValidation = { register };
 
 export type TRegisterPayload = z.infer<typeof register>;

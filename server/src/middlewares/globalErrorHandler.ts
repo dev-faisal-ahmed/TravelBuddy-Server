@@ -5,6 +5,16 @@ export const globalErrorHandler: ErrorRequestHandler = (err, _, res, __) => {
   let status: number = err.status || 500;
   let message: string = err.message || 'something went wrong';
 
+  if (err.code === 11000) {
+    console.log(err.errorResponse);
+    let errMessage;
+    Object.keys(err.errorResponse.keyValue).forEach((key) => {
+      errMessage = `${key} : ${err.errorResponse.keyValue[key]} already Exist`;
+    });
+
+    if (errMessage) message = errMessage;
+  }
+
   if (err.name === 'ZodError') {
     message = err.issues.reduce(
       (

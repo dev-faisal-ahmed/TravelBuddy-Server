@@ -3,13 +3,23 @@ import { tryCatch } from '../../utils/tryCatch';
 import { tripServices } from './services';
 
 const createTrip = tryCatch(async (req, res) => {
-  const newTravel = await tripServices.createTrip(req.user, req.body);
+  const newTrip = await tripServices.createTrip(req.user, req.body);
 
   sendSuccessResponse(res, {
     status: 200,
-    message: 'Travel created successfully',
-    data: newTravel,
+    message: 'Trip created successfully',
+    data: newTrip,
   });
 });
 
-export const tripController = { createTrip };
+const getSingleTrip = tryCatch(async (req, res) => {
+  const trip = await tripServices.getSingleTrip(req.params.tripId);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Trip Retrieved Successfully',
+    data: trip,
+  });
+});
+
+export const tripController = { createTrip, getSingleTrip };

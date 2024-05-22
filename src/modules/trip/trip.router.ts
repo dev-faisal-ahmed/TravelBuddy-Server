@@ -12,3 +12,5 @@ tripRouter.post(
   validationHandler(tripValidation.createTrip),
   tripController.createTrip
 );
+
+tripRouter.get('/:tripId', tripController.getSingleTrip);

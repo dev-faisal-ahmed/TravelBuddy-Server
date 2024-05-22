@@ -1,6 +1,6 @@
 import { TripModel } from '../../trip/trip.model';
 
-export const getTrips = async (query: Record<string, string>) => {
+export const getTrips = async (query: Record<string, any>) => {
   const dbQuery: Record<string, any> = {};
   if (query.destination)
     dbQuery.destination = { $regex: query.destination, $options: 'i' };
@@ -14,7 +14,17 @@ export const getTrips = async (query: Record<string, string>) => {
     dbQuery.description = { $regex: new RegExp(keys, 'i') };
   }
 
-  const trips = await TripModel.find(dbQuery);
+  const page = Number(query.page || '1');
+  const limit = Number(query.limit || '10');
 
-  return trips;
+  const total = await TripModel.countDocuments(dbQuery);
+
+  const trips = await TripModel.find(dbQuery)
+    .skip((page - 1) * limit)
+    .limit(limit);
+
+  return {
+    meta: { page, limit, total, totalPages: Math.ceil(total / limit) },
+    trips,
+  };
 };

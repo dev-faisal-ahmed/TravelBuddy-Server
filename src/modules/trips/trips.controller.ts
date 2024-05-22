@@ -3,12 +3,13 @@ import { tryCatch } from '../../utils/tryCatch';
 import { tripsServices } from './services';
 
 const getTrips = tryCatch(async (req, res) => {
-  const trips = await tripsServices.getTrips(req.query);
+  const tripsData = await tripsServices.getTrips(req.query);
 
   sendSuccessResponse(res, {
     status: 200,
     message: 'All Trips retrieved successfully',
-    data: trips,
+    meta: tripsData.meta,
+    data: tripsData.trips,
   });
 });
 

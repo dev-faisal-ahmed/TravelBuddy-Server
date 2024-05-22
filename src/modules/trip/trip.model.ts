@@ -4,6 +4,7 @@ import { tripTypes } from './trip.constants';
 
 const TripSchema = new Schema<TTrip>({
   user: { type: Schema.Types.ObjectId, required: true, ref: 'user' },
+  images: [{ type: String, required: true }],
   description: { type: String, required: true },
   destination: { type: String, required: true },
   itinerary: { type: String, required: true },

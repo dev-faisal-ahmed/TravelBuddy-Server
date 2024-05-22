@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { tripTypes } from './trip.constants';
 
 const createTrip = z.object({
+  images: z.string({ required_error: 'images is required' }).array(),
   destination: z.string({ required_error: 'Destination is required' }),
   description: z.string({ required_error: 'Description is required' }),
   itinerary: z.string({ required_error: 'Itinerary is required' }),

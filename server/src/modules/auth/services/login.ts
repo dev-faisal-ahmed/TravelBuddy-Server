@@ -26,6 +26,7 @@ export const login = async (payload: TLoginPayload) => {
   // creating token
   const token = jwt.sign(
     {
+      _id: isUserExist._id,
       email: isUserExist.email,
       name: isUserExist.name,
       role: isUserExist.role,

@@ -15,4 +15,17 @@ const createTripRequest = tryCatch(async (req, res) => {
   });
 });
 
-export const tripRequestController = { createTripRequest };
+const respondTripRequest = tryCatch(async (req, res) => {
+  const responseDetails = await tripRequestServices.respondTripRequest(
+    req.user,
+    req.body
+  );
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Successfully responded',
+    data: responseDetails,
+  });
+});
+
+export const tripRequestController = { createTripRequest, respondTripRequest };

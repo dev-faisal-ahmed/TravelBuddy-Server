@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-export type TTripRequestStatus = 'PENDING' | 'ACCEPTED' | 'REJECTED';
+export type TTripRequestStatus = 'PENDING' | 'ACCEPTED';
 
 export type TTripRequest = {
   _id: Schema.Types.ObjectId;

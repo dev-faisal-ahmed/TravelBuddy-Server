@@ -12,3 +12,10 @@ tripRequestRouter.post(
   validationHandler(tripRequestValidation.createTripRequest),
   tripRequestController.createTripRequest
 );
+
+tripRequestRouter.patch(
+  '/',
+  authGuard('USER'),
+  validationHandler(tripRequestValidation.respondTripRequest),
+  tripRequestController.respondTripRequest
+);

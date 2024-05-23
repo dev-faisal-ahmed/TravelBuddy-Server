@@ -12,4 +12,14 @@ const updateProfile = tryCatch(async (req, res) => {
   });
 });
 
-export const profileController = { updateProfile };
+const changePassword = tryCatch(async (req, res) => {
+  const updatedUser = await profileServices.changePassword(req.user, req.body);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Password changed successfully',
+    data: updatedUser,
+  });
+});
+
+export const profileController = { updateProfile, changePassword };

@@ -12,3 +12,10 @@ profileRouter.patch(
   validationHandler(profileValidation.updateProfile),
   profileController.updateProfile
 );
+
+profileRouter.patch(
+  '/change-password',
+  authGuard('USER', 'ADMIN'),
+  validationHandler(profileValidation.changePassword),
+  profileController.changePassword
+);

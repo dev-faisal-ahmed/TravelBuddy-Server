@@ -10,7 +10,7 @@ type ErrorResponseType = { error: any; message: string; status: number };
 
 export const sendSuccessResponse = (
   res: Response,
-  { status, data, message, meta }: SuccessResponseType
+  { status, data, message, meta }: SuccessResponseType,
 ) => {
   res
     .status(status)
@@ -19,7 +19,7 @@ export const sendSuccessResponse = (
 
 export const sendErrorResponse = (
   res: Response,
-  { status, message, error }: ErrorResponseType
+  { status, message, error }: ErrorResponseType,
 ) => {
   res.status(status).json({ ok: false, message, error });
 };

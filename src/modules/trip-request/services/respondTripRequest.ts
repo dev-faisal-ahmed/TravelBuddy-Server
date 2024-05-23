@@ -6,7 +6,7 @@ import { TRespondTripRequest } from '../tripRequest.validation';
 
 export const respondTripRequest = async (
   user: TUser,
-  payload: TRespondTripRequest
+  payload: TRespondTripRequest,
 ) => {
   // checking if the trip request exist or not
   const isRequestExist = await TripRequestModel.findOne({ _id: payload._id });
@@ -41,7 +41,7 @@ export const respondTripRequest = async (
   if (payload.isAccepted) {
     const requestStatus = await TripRequestModel.updateOne(
       { _id: payload._id },
-      { $set: { status: 'ACCEPTED' } }
+      { $set: { status: 'ACCEPTED' } },
     );
 
     return requestStatus;

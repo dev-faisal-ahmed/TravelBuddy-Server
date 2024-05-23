@@ -4,11 +4,11 @@ import { TUpdateProfilePayload } from '../profile.validation';
 
 export const updateProfile = async (
   user: TUser,
-  payload: TUpdateProfilePayload
+  payload: TUpdateProfilePayload,
 ) => {
   const updatedUser = await UserModel.updateOne(
     { _id: user._id },
-    { $set: payload }
+    { $set: payload },
   );
 
   return updatedUser;

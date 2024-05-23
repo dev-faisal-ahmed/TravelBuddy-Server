@@ -8,9 +8,11 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 export const authGuard = (...requiredRoles: TUserRoles[]) => {
   return tryCatch(async (req, _, next) => {
     const token = req.headers.authorization;
+
     if (!token) throw new AppError('Token not found', 404);
 
     const decodedUser = jwt.verify(token, JWT_SECRET!) as JwtPayload;
+
     if (!decodedUser) throw new AppError('Invalid Token', 404);
 
     const user = await UserModel.findOne({

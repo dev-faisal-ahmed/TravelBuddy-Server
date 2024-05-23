@@ -5,5 +5,11 @@ const updateProfile = z.object({
   email: z.string().email({ message: 'Provide an valid email' }).optional(),
 });
 
-export const profileValidation = { updateProfile };
+const changePassword = z.object({
+  oldPassword: z.string({ required_error: 'Old password is required' }),
+  newPassword: z.string({ required_error: 'New Password is required' }),
+});
+
+export const profileValidation = { updateProfile, changePassword };
 export type TUpdateProfilePayload = z.infer<typeof updateProfile>;
+export type TChangePasswordPayload = z.infer<typeof changePassword>;

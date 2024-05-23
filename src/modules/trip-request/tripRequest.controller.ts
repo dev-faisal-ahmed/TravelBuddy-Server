@@ -5,7 +5,7 @@ import { tripRequestServices } from './services';
 const createTripRequest = tryCatch(async (req, res) => {
   const newTripRequest = await tripRequestServices.createTripRequest(
     req.user,
-    req.body
+    req.body,
   );
 
   sendSuccessResponse(res, {
@@ -18,7 +18,7 @@ const createTripRequest = tryCatch(async (req, res) => {
 const respondTripRequest = tryCatch(async (req, res) => {
   const responseDetails = await tripRequestServices.respondTripRequest(
     req.user,
-    req.body
+    req.body,
   );
 
   sendSuccessResponse(res, {

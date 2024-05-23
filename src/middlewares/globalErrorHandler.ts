@@ -20,7 +20,7 @@ export const globalErrorHandler: ErrorRequestHandler = (err, _, res, __) => {
       (
         msg: string,
         issue: { message: string; path: any[]; received: string },
-        index: number
+        index: number,
       ) => {
         msg +=
           issue.received === 'undefined'
@@ -29,7 +29,7 @@ export const globalErrorHandler: ErrorRequestHandler = (err, _, res, __) => {
         msg += index !== err.issues.length - 1 ? ' || ' : '';
         return msg;
       },
-      ''
+      '',
     );
   }
 

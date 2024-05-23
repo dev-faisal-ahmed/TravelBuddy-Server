@@ -8,11 +8,11 @@ export const authRouter = Router();
 authRouter.post(
   '/register',
   validationHandler(authValidation.register),
-  authController.register
+  authController.register,
 );
 
 authRouter.post(
   '/login',
   validationHandler(authValidation.login),
-  authController.login
+  authController.login,
 );

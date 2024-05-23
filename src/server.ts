@@ -27,7 +27,7 @@ process.on('uncaughtException', () => {
 // handling the unhandled rejections
 process.on('unhandledRejection', () => {
   console.log(
-    `Sorry we are facing unhandled rejection, shutting down the server`
+    `Sorry we are facing unhandled rejection, shutting down the server`,
   );
   if (server) {
     server.close(() => {

@@ -6,7 +6,7 @@ import { TCreateTripRequestPayload } from '../tripRequest.validation';
 
 export const createTripRequest = async (
   user: TUser,
-  payload: TCreateTripRequestPayload
+  payload: TCreateTripRequestPayload,
 ) => {
   // checking if that trip exist or not
   const isTripExist = await TripModel.findOne({ _id: payload.trip });

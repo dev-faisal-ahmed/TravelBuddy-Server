@@ -15,3 +15,4 @@ tripRouter.post(
 
 tripRouter.get('/:tripId', tripController.getSingleTrip);
 tripRouter.delete('/:tripId', authGuard('USER'), tripController.deleteTrip);
+tripRouter.patch('/:tripId', authGuard('USER'), tripController.updateTrip);

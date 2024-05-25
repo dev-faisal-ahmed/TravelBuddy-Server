@@ -21,6 +21,31 @@ const createTrip = z.object({
   }),
 });
 
-export const tripValidation = { createTrip };
+const updateTrip = z.object({
+  images: z.string().array().optional(),
+  destination: z.string().optional(),
+  description: z.string().optional(),
+  itinerary: z.string().optional(),
+
+  startDate: z
+    .string()
+    .transform((date) => new Date(date))
+    .optional(),
+
+  endDate: z
+    .string()
+    .transform((date) => new Date(date))
+    .optional(),
+
+  tripType: z
+    .enum([...(tripTypes as [string, ...string[]])], {
+      required_error: 'Trip Types is required',
+      message: `Trip types has to be in '${tripTypes}'`,
+    })
+    .optional(),
+});
+
+export const tripValidation = { createTrip, updateTrip };
 
 export type TCreateTripPayload = z.infer<typeof createTrip>;
+export type TUpdateTripPayload = z.infer<typeof updateTrip>;

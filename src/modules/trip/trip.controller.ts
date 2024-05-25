@@ -35,4 +35,23 @@ const deleteTrip = tryCatch(async (req, res) => {
   });
 });
 
-export const tripController = { createTrip, getSingleTrip, deleteTrip };
+const updateTrip = tryCatch(async (req, res) => {
+  const updatedTrip = await tripServices.updateTrip(
+    req.user,
+    req.body,
+    req.params.tripId
+  );
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Trip Updated Successfully',
+    data: updatedTrip,
+  });
+});
+
+export const tripController = {
+  createTrip,
+  getSingleTrip,
+  deleteTrip,
+  updateTrip,
+};

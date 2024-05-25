@@ -15,7 +15,7 @@ export const getTrips = async (query: Record<string, any>) => {
   }
 
   const page = Number(query.page || '1');
-  const limit = Number(query.limit || '10');
+  const limit = Number(query.limit || '12');
 
   const total = await TripModel.countDocuments(dbQuery);
 
@@ -25,6 +25,6 @@ export const getTrips = async (query: Record<string, any>) => {
 
   return {
     meta: { page, limit, total, totalPages: Math.ceil(total / limit) },
-    trips,
+    trips: trips.reverse(),
   };
 };

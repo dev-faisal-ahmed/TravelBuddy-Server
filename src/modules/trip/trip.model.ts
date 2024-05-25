@@ -11,6 +11,7 @@ const TripSchema = new Schema<TTrip>({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   tripType: { type: String, enum: tripTypes, required: true },
+  isDeleted: { type: Boolean, default: false },
 });
 
 export const TripModel = model('trip', TripSchema);

@@ -12,4 +12,5 @@ export type TTrip = {
   startDate: Date;
   endDate: Date;
   tripType: TTripType;
+  isDeleted: boolean;
 };

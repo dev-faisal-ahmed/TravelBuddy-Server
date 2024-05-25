@@ -10,7 +10,8 @@ tripRouter.post(
   '/',
   authGuard('USER'),
   validationHandler(tripValidation.createTrip),
-  tripController.createTrip,
+  tripController.createTrip
 );
 
 tripRouter.get('/:tripId', tripController.getSingleTrip);
+tripRouter.delete('/:tripId', authGuard('USER'), tripController.deleteTrip);

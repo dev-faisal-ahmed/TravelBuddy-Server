@@ -22,4 +22,17 @@ const getSingleTrip = tryCatch(async (req, res) => {
   });
 });
 
-export const tripController = { createTrip, getSingleTrip };
+const deleteTrip = tryCatch(async (req, res) => {
+  const deletedStatus = await tripServices.deleteTrip(
+    req.user,
+    req.params.tripId
+  );
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Trip Deleted Successfully',
+    data: deletedStatus,
+  });
+});
+
+export const tripController = { createTrip, getSingleTrip, deleteTrip };

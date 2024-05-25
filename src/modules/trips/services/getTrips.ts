@@ -19,7 +19,7 @@ export const getTrips = async (query: Record<string, any>) => {
 
   const total = await TripModel.countDocuments(dbQuery);
 
-  const trips = await TripModel.find(dbQuery)
+  const trips = await TripModel.find({ ...dbQuery, isDeleted: false })
     .skip((page - 1) * limit)
     .limit(limit);
 

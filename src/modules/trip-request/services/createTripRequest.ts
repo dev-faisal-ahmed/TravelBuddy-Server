@@ -24,8 +24,6 @@ export const createTripRequest = async (
     _id: payload.trip,
   });
 
-  console.log(isUserOwner);
-
   if (isUserOwner) throw new AppError('You are the owner', 400);
 
   if (isTripRequestExist) throw new AppError('You have already requested', 400);

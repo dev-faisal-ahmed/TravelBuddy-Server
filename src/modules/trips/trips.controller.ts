@@ -13,4 +13,14 @@ const getTrips = tryCatch(async (req, res) => {
   });
 });
 
-export const tripsController = { getTrips };
+const getMyTrips = tryCatch(async (req, res) => {
+  const myTrips = await tripsServices.getMyTrips(req.user);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'My Trips retrieved successfully',
+    data: myTrips,
+  });
+});
+
+export const tripsController = { getTrips, getMyTrips };

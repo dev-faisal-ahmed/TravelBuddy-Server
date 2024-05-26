@@ -8,20 +8,26 @@ export const tripRequestRouter = Router();
 
 tripRequestRouter.post(
   '/',
-  authGuard('USER'),
+  authGuard('USER', 'ADMIN'),
   validationHandler(tripRequestValidation.createTripRequest),
   tripRequestController.createTripRequest
 );
 
 tripRequestRouter.patch(
   '/',
-  authGuard('USER'),
+  authGuard('USER', 'ADMIN'),
   validationHandler(tripRequestValidation.respondTripRequest),
   tripRequestController.respondTripRequest
 );
 
 tripRequestRouter.get(
   '/requested',
-  authGuard('USER'),
+  authGuard('USER', 'ADMIN'),
   tripRequestController.getRequestedTrips
+);
+
+tripRequestRouter.get(
+  '/join-requests',
+  authGuard('USER', 'ADMIN'),
+  tripRequestController.getJoinRequests
 );

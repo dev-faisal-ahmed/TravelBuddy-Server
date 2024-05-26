@@ -38,8 +38,20 @@ const getRequestedTrips = tryCatch(async (req, res) => {
   });
 });
 
+const getJoinRequests = tryCatch(async (req, res) => {
+  const userId = req.user._id;
+  const joinRequests = await tripRequestServices.getJoinRequests(userId);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Trip join requests retrieved successfully',
+    data: joinRequests,
+  });
+});
+
 export const tripRequestController = {
   createTripRequest,
   respondTripRequest,
   getRequestedTrips,
+  getJoinRequests,
 };

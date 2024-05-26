@@ -8,7 +8,7 @@ export const profileRouter = Router();
 
 profileRouter.patch(
   '/',
-  authGuard('USER'),
+  authGuard('USER', 'ADMIN'),
   validationHandler(profileValidation.updateProfile),
   profileController.updateProfile
 );

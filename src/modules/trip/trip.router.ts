@@ -8,11 +8,19 @@ export const tripRouter = Router();
 
 tripRouter.post(
   '/',
-  authGuard('USER'),
+  authGuard('USER', 'ADMIN'),
   validationHandler(tripValidation.createTrip),
   tripController.createTrip
 );
 
 tripRouter.get('/:tripId', tripController.getSingleTrip);
-tripRouter.delete('/:tripId', authGuard('USER'), tripController.deleteTrip);
-tripRouter.patch('/:tripId', authGuard('USER'), tripController.updateTrip);
+tripRouter.delete(
+  '/:tripId',
+  authGuard('USER', 'ADMIN'),
+  tripController.deleteTrip
+);
+tripRouter.patch(
+  '/:tripId',
+  authGuard('USER', 'ADMIN'),
+  tripController.updateTrip
+);

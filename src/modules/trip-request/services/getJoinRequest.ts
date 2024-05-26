@@ -2,7 +2,7 @@ import { TripRequestModel } from '../tripRequest.model';
 import { TUser } from '../../users/user.interface';
 
 export const getJoinRequests = async (user: TUser) => {
-  const [tripRequests] = await TripRequestModel.aggregate([
+  const tripRequests = await TripRequestModel.aggregate([
     {
       $lookup: {
         from: 'trips',
@@ -21,6 +21,7 @@ export const getJoinRequests = async (user: TUser) => {
     {
       $match: {
         'trip.user': user._id,
+        status: 'PENDING',
       },
     },
 

@@ -23,7 +23,7 @@ const respondTripRequest = tryCatch(async (req, res) => {
 
   sendSuccessResponse(res, {
     status: 200,
-    message: 'Successfully responded',
+    message: `Request ${req.body.isAccepted ? 'Accepted' : 'Rejected'}`,
     data: responseDetails,
   });
 });
@@ -39,7 +39,6 @@ const getRequestedTrips = tryCatch(async (req, res) => {
 });
 
 const getJoinRequests = tryCatch(async (req, res) => {
-  const userId = req.user._id;
   const joinRequests = await tripRequestServices.getJoinRequests(req.user);
 
   sendSuccessResponse(res, {

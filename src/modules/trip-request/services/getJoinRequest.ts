@@ -1,7 +1,7 @@
-import { Types } from 'mongoose';
 import { TripRequestModel } from '../tripRequest.model';
+import { TUser } from '../../users/user.interface';
 
-export const getJoinRequests = async (userId: string) => {
+export const getJoinRequests = async (user: TUser) => {
   const [tripRequests] = await TripRequestModel.aggregate([
     {
       $lookup: {
@@ -20,7 +20,7 @@ export const getJoinRequests = async (userId: string) => {
 
     {
       $match: {
-        'trip.user': new Types.ObjectId(userId),
+        'trip.user': user._id,
       },
     },
 

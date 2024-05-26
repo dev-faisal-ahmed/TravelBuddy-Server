@@ -40,7 +40,7 @@ const getRequestedTrips = tryCatch(async (req, res) => {
 
 const getJoinRequests = tryCatch(async (req, res) => {
   const userId = req.user._id;
-  const joinRequests = await tripRequestServices.getJoinRequests(userId);
+  const joinRequests = await tripRequestServices.getJoinRequests(req.user);
 
   sendSuccessResponse(res, {
     status: 200,

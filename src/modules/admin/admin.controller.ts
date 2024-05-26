@@ -12,4 +12,14 @@ const getAllTrips = tryCatch(async (req, res) => {
   });
 });
 
-export const adminController = { getAllTrips };
+const deleteTrip = tryCatch(async (req, res) => {
+  const deletedTrip = await adminServices.deleteTrip(req.params.tripId);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Trip Deleted Successfully',
+    data: deletedTrip,
+  });
+});
+
+export const adminController = { getAllTrips, deleteTrip };

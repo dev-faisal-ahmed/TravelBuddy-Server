@@ -28,6 +28,7 @@ export const login = async (payload: TLoginPayload) => {
     {
       _id: isUserExist._id,
       email: isUserExist.email,
+      phone: isUserExist?.phone,
       name: isUserExist.name,
       role: isUserExist.role,
     },

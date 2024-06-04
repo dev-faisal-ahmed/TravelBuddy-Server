@@ -5,6 +5,7 @@ import { userRoles, userStatus } from './user.constants';
 export const UserSchema = new Schema<TUser>({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
+  phone: { type: String, unique: true },
   password: { type: String, required: true },
   photoUrl: { type: String },
   role: { type: String, enum: userRoles, default: 'USER' },

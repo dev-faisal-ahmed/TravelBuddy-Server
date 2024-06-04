@@ -5,6 +5,7 @@ export type TUserStatus = 'ACTIVE' | 'BLOCKED';
 export type TUser = {
   _id: Schema.Types.ObjectId;
   email: string;
+  phone: string;
   name: string;
   password: string;
   photoUrl: string;

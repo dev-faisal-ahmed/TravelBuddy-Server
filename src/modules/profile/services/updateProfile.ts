@@ -19,6 +19,7 @@ export const updateProfile = async (
       _id: updatedUser?._id,
       email: updatedUser?.email,
       name: updatedUser?.name,
+      phone: updatedUser?.phone,
       role: updatedUser?.role,
     },
     JWT_SECRET!,

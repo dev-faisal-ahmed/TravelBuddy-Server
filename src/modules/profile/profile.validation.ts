@@ -3,6 +3,7 @@ import { z } from 'zod';
 const updateProfile = z.object({
   name: z.string().optional(),
   email: z.string().email({ message: 'Provide an valid email' }).optional(),
+  phone: z.string().optional(),
 });
 
 const changePassword = z.object({

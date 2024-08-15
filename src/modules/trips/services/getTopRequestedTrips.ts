@@ -13,10 +13,11 @@ export const getTopRequestedTrips = async () => {
     },
     {
       $project: {
-        images: 'images',
-        description: 'description',
-        startDate: 'startDate',
-        endDate: 'endDate',
+        images: '$images',
+        destination: '$destination',
+        description: '$description',
+        startDate: '$startDate',
+        endDate: '$endDate',
         tripRequests: '$tripRequests',
       },
     },

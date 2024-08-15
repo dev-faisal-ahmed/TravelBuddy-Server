@@ -23,4 +23,14 @@ const getMyTrips = tryCatch(async (req, res) => {
   });
 });
 
-export const tripsController = { getTrips, getMyTrips };
+const getTopRequestedTrips = tryCatch(async (req, res) => {
+  const topRequestedTrips = await tripsServices.getTopRequestedTrips();
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: 'Top requested trips retrieved successfully',
+    data: topRequestedTrips,
+  });
+});
+
+export const tripsController = { getTrips, getMyTrips, getTopRequestedTrips };

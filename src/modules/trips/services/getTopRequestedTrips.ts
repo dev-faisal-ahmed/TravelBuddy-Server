@@ -11,6 +11,15 @@ export const getTopRequestedTrips = async () => {
         as: 'tripRequests',
       },
     },
+    {
+      $project: {
+        images: 'images',
+        description: 'description',
+        startDate: 'startDate',
+        endDate: 'endDate',
+        tripRequests: '$tripRequests',
+      },
+    },
     { $sort: { tripRequests: -1 } },
   ]).limit(6);
 

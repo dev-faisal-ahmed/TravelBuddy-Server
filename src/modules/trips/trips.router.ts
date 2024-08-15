@@ -13,3 +13,4 @@ tripsRouter.get(
 );
 
 tripsRouter.get('/top', tripsController.getTopRequestedTrips);
+tripsRouter.get('/upcoming', tripsController.getUpcomingTrips);

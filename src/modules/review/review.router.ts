@@ -13,7 +13,7 @@ reviewRouter.post(
   reviewController.addReview
 );
 
-reviewRouter.post(
+reviewRouter.delete(
   '/:reviewId',
   authGuard('USER', 'ADMIN'),
   reviewController.deleteReview

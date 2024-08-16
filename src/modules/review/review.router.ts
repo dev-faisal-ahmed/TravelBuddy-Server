@@ -12,3 +12,9 @@ reviewRouter.post(
   validationHandler(reviewValidation.addReview),
   reviewController.addReview
 );
+
+reviewRouter.post(
+  '/:reviewId',
+  authGuard('USER', 'ADMIN'),
+  reviewController.deleteReview
+);

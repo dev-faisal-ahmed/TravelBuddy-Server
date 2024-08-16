@@ -12,4 +12,15 @@ const addReview = tryCatch(async (req, res) => {
   });
 });
 
-export const reviewController = { addReview };
+const deleteReview = tryCatch(async (req, res) => {
+  const { reviewId } = req.params;
+  const message = await reviewServices.deleteReview(reviewId);
+
+  sendSuccessResponse(res, {
+    status: 200,
+    message: message,
+    data: null,
+  });
+});
+
+export const reviewController = { addReview, deleteReview };
